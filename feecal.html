@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+<title>FEE CALCULATOR</title>
+<script>
+function cal()
+{
+var reg=document.form1.Pass.value;
+var ch;
+var fees;
+
+
+fees=0;
+if(reg == "Voter ID")
+{
+ch=Number(0);
+fees=fees+50;
+} 
+else if(reg=="Identity-Certificate")
+{
+ch=Number(1);
+fees=fees+25;
+}
+else 
+{
+ch=Number(2);
+fees=fees+20;
+}
+
+reg=document.form1.Tos.value;
+
+switch(ch)
+{
+	case 0: if(reg=="Fresh")
+			{
+				fees=fees+50;
+
+			} 
+			else
+			{
+				fees=fees+40;
+			}
+			break;
+	case 1: if(reg=="Fresh")
+			{
+				fees=fees+40;
+			} 
+			else
+			{
+				fees=fees+45;
+			}
+			break;	
+	case 2: if(reg=="Fresh")
+			{
+				fees=fees+40;
+			} 
+			else
+			{
+				fees=fees+30;
+			}
+			break;			
+}
+
+reg=document.form1.Age.value;
+if(reg=="less-15" || reg=="15-18")
+{
+	fees=fees+100;
+}
+else
+{
+	fees=fees+150;
+}
+document.getElementById("fee").innerHTML=fees;
+return false;
+}
+</script>
+<style>
+label{
+display:inline-block;
+width:250px;
+color:black;
+}
+.calc{
+width:200px;
+color:#4C0000;
+padding:3px;
+}
+
+h1{
+text-align:center;
+font-weight: bolder;
+background-color: white;;
+width:auto;
+padding:35px;
+color:black;
+font-size:500%;
+
+}
+#fee{
+	color:black;
+	font-weight: bold;
+	font-size: 50px;
+}
+#rol{
+	color:black;
+	
+	font-weight: bold;
+	font-size: 50px;
+}
+#rock{
+	margin-left:650px;
+	margin-top: 5%;
+	margin-right: 5%;
+width:200px;
+border: 3px solid black;
+	background:light-blue;
+	padding: 15px;
+}
+</style>
+</head>
+<body>
+<h1>Fee Calculator</h1>
+
+<form onsubmit="return cal()" name="form1" id="rock">
+<label>Select Application Type* : </label>
+<select name="Pass" >
+<option value="Voter">Voter ID</option>
+
+</select id="tos" ><br><br>
+<label>Type of Service* : </label>
+<select name="Tos" >
+<option value="Fresh">Fresh	</option>
+<option value="Re-Issue">Re-Issue</option>
+
+</select><br><br>
+<label>Applicant's Age* : </label>
+<select id="Age" >
+<option value="less-15">Less than 15 years</option>
+<option value="15-18">Between 15 and 18 years </option>
+<option value="18-30" selected>Above 18 years</option>
+</select><br><br>
+<center><input type="submit" value="Calculate fee" class="calc"></center><br><br>
+<center><span id="rol">&#8377;</span><span id="fee"></span><br><br></center>
+<span>Note : * is required field</span>
+
+</form>
+</body>
+</html>
